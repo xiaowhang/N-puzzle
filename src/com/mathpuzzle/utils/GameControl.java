@@ -40,7 +40,7 @@ public class GameControl {
         int total = n * n;
         for (int i = 0; i < total; i++) {
             if (arr[i / n][i % n] != 0) {
-                gameWindow.cardLabels.get(i).setBackground(new Color(118, 190, 103));
+                setCardColor(i);
                 gameWindow.cardLabels.get(i).setText(Integer.toString(arr[i / n][i % n]));
                 gameWindow.cardLabels.get(i).setOpaque(true);
             } else {
@@ -48,6 +48,21 @@ public class GameControl {
                 gameWindow.cardLabels.get(i).setOpaque(false);
             }
         }
+    }
+
+    // 设置卡片颜色
+    public void setCardColor(int i) {
+        Color color = null;
+        int n = gameWindow.size;
+        if (n == 3)
+            color = new Color(118, 190, 103);
+        else if (n == 4)
+            color = new Color(255, 233, 87);
+        else if (n == 6)
+            color = new Color(242, 159, 63);
+        else if (n == 10)
+            color = new Color(242, 117, 63);
+        gameWindow.cardLabels.get(i).setBackground(color);
     }
 
     // 移动
